@@ -80,7 +80,7 @@ open class EPContactsPicker: UITableViewController, UISearchResultsUpdating, UIS
             controller.searchBar.setValue("Annuler", forKey:"_cancelButtonText")
             if let searchTextField = controller.searchBar.value(forKey: "searchField") as? UITextField {
                 if searchTextField.responds(to: #selector(getter: UITextField.attributedPlaceholder)) {
-                    let attributeDict = [NSForegroundColorAttributeName: UIColor.gray]
+                    let attributeDict: [NSAttributedStringKey : Any] = [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.gray]
                     searchTextField.attributedPlaceholder = NSAttributedString(string: "Recherche", attributes: attributeDict)
                 }
             }
