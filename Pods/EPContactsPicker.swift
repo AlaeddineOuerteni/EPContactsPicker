@@ -76,6 +76,15 @@ open class EPContactsPicker: UITableViewController, UISearchResultsUpdating, UIS
             controller.hidesNavigationBarDuringPresentation = false
             controller.searchBar.sizeToFit()
             controller.searchBar.delegate = self
+            
+            controller.searchBar.setValue("Annuler", forKey:"_cancelButtonText")
+            if let searchTextField = controller.searchBar.value(forKey: "searchField") as? UITextField {
+                if searchTextField.responds(to: #selector(getter: UITextField.attributedPlaceholder)) {
+                    let attributeDict = [NSForegroundColorAttributeName: UIColor.gray]
+                    searchTextField.attributedPlaceholder = NSAttributedString(string: "Recherche", attributes: attributeDict)
+                }
+            }
+            
             self.tableView.tableHeaderView = controller.searchBar
             return controller
         })()
@@ -405,7 +414,6 @@ open class EPContactsPicker: UITableViewController, UISearchResultsUpdating, UIS
                             filteredContacts.append(epContact)
                         }
                     }
-                    
                 }
                 
                 self.tableView.reloadData()
