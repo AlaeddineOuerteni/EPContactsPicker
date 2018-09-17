@@ -52,9 +52,4 @@ class ViewController: UIViewController, EPPickerDelegate {
             print("\(contact.displayName())")
         }
     }
-    
-    func epContactPicker(_: EPContactsPicker, shouldAddContact contact: EPContact) -> Bool {
-        return contact.hasPhoneNumbers()
-    }
-
 }
